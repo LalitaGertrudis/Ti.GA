@@ -191,4 +191,14 @@ public class TrackerProxy  extends KrollProxy {
 			Log.d(TigaModule.MODULE_FULL_NAME,"addSocialNetwork - target:" + target);
 		}		
 	}
+
+	@Kroll.method
+	public void setCampaignParamsFromUrl(String utmParams)
+	{
+		// Send utmParams
+		_tracker.send(new HitBuilders.ScreenViewBuilder().setCampaignParamsFromUrl(utmParams).build());		
+		if(_debug){
+			Log.d(TigaModule.MODULE_FULL_NAME,"utmParams:" + utmParams);
+		}
+	}
 }
